@@ -1,8 +1,90 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    font-family: Karla;
+body {
+  font-family: Karla;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+}
+.nav {
+  display: flex;
+  background: pink;
+}
+form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.img-container {
+  position: absolute;
+  height: 100%;
+  right: -50px;
+  top: 0;
+  display: flex;
+}
+img {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+}
+.title-container {
+  position: relative;
+}
+.inputs {
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+}
+.form-item {
+  display: flex;
+  justify-content: space-between;
+}
+.duty-input {
+  width: 33%;
+}
+.tags-input {
+  width: 65%;
+}
+.desc-input {
+  width: 100%;
+}
+.title {
+  font-size: 40px;
+  padding: 30px;
+}
+.container {
+  width: 100%;
+  background: white;
+}
+.description {
+  display: flex;
+  padding: 10px;
+}
+.item {
+  font-size: 22px;
+}
+.item:nth-child(1) {
+  width: 15%;
+}
+.item:nth-child(2) {
+  width: 50%;
+}
+.item:nth-child(3) {
+  width: 20%;
+}
+.item:nth-child(4) {
+  width: 15%;
+}
+.todos {
+  display: flex;
+  background: #f0f0f0;
+  padding: 10px;
 }

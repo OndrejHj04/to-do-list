@@ -6,18 +6,32 @@ export default function App() {
 
     const [allNotes, setAllNotes] = React.useState([])
     const [newNote, setNewNote] = React.useState({
-        Title: "", Description: "", Tags: [], State: ""
+        Title: "", Description: "", Tags: [], State: "Start working"
     })
+    const [inProgress, setInProgress] = React.useState([])
+
     function submit(){
+        let inputs = document.querySelectorAll(".inputs")
+        inputs.forEach(item=>{
+            item.value = ""
+        })
         setAllNotes(oldVal=>{
             return [
                 ...oldVal,
                 newNote
             ]
         })
+        setNewNote({})
     }
 
-
+    function stateChange(event){
+        setInProgress(oldVal=>{
+            return [
+                ...oldVal,
+                newNote
+            ]
+        })
+    }
 
     function change(event){
         setNewNote(oldVal=>{
@@ -41,7 +55,7 @@ export default function App() {
   return (
     <div className="app">
         <Nav submit={submit} change={change}/>
-        {!!allNotes.length && <Body allNotes={allNotes} />}
+        {!!allNotes.length && <Body allNotes={allNotes} stateChange={stateChange} inProgress={inProgress}/>}
     </div>
   );
 }

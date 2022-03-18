@@ -3,20 +3,24 @@ import { nanoid } from 'nanoid'
 
 export default function Body(props) {
   const data = props.allNotes.map((item) => {
+  
+    let tagsArr = new Set(item.Tags)
+    tagsArr = [...tagsArr]
 
-    const tags = item.Tags.map(item=>{
-      if(item)
-      return <span className="tag-item" key={nanoid()}>{item}</span>
+    const tags = tagsArr.map(item=>{
+      if(item){
+        return <span className="tag-item" key={nanoid()}>{item}</span>
+      }
+
     })
-
 
     if(item.Title)
     return (
       <div className="todos to-do" key={nanoid()}>
-        <span className="item">{item.Title}</span>
+        <span className="item title-container">{item.Title}</span>
         <span className="item">{item.Description}</span>
         <span className="item tags-container">{tags}</span>
-        <span className="item">{item.State}</span>
+        <span className="item" onClick={(event)=>props.stateChange(event)}>{item.State}</span>
       </div>
     );
   });

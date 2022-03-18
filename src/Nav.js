@@ -10,7 +10,7 @@ export default function Nav(props){
 
           </div>
         </div>
-        <form>
+        <form >
             <div className="form-item">
             <input type="text" className="inputs duty-input" placeholder="Duty" name="Title" onChange={(event)=>props.change(event)}/>
             <input type="text" className="inputs tags-input" placeholder="Tags" name="Tags" onChange={(event)=>props.change(event)}/>

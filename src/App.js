@@ -6,7 +6,7 @@ export default function App() {
 
     const [allNotes, setAllNotes] = React.useState([])
     const [newNote, setNewNote] = React.useState({
-        Title: "", Description: "", Tags: "", State: ""
+        Title: "", Description: "", Tags: [], State: ""
     })
     function submit(){
         setAllNotes(oldVal=>{
@@ -17,15 +17,23 @@ export default function App() {
         })
     }
 
-    console.log(allNotes)
 
 
     function change(event){
         setNewNote(oldVal=>{
-            return {
-                ...oldVal,
-                [event.target.name]: event.target.value
+            if(event.target.name === "Tags"){
+                let arr = event.target.value.split(" ")
+                return {
+                    ...oldVal,
+                    [event.target.name]: arr
+                }
+            }else{
+                return {
+                    ...oldVal,
+                    [event.target.name]: event.target.value
+                }
             }
+
         })
     }
 

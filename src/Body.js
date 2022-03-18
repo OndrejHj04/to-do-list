@@ -1,19 +1,25 @@
 import React from "react";
+import { nanoid } from 'nanoid'
 
 export default function Body(props) {
   const data = props.allNotes.map((item) => {
 
+    const tags = item.Tags.map(item=>{
+      if(item)
+      return <span className="tag-item" key={nanoid()}>{item}</span>
+    })
+
+
+    if(item.Title)
     return (
-<div className="todos to-do">
+      <div className="todos to-do" key={nanoid()}>
         <span className="item">{item.Title}</span>
         <span className="item">{item.Description}</span>
-        <span className="item">{item.Tags}</span>
+        <span className="item tags-container">{tags}</span>
         <span className="item">{item.State}</span>
-        </div>
+      </div>
     );
   });
-
-
 
   return (
     <div className="container">
@@ -21,9 +27,7 @@ export default function Body(props) {
         <h1>TO do</h1>
       </div>
       <div className="list">
-        <div>
-          {data}
-        </div>
+        <div>{data}</div>
 
         <div>
           <div className="description">
@@ -31,10 +35,7 @@ export default function Body(props) {
           </div>
 
           <div className="todos in-progress">
-            {/* <span className="item">Duty</span>
-            <span className="item">Description</span>
-            <span className="item">Tags</span>
-            <span className="item">Finished</span> */}
+
           </div>
         </div>
 
@@ -44,10 +45,7 @@ export default function Body(props) {
           </div>
 
           <div className="todos finished">
-            {/* <span className="item">Duty</span>
-            <span className="item">Description</span>
-            <span className="item">Tags</span>
-            <span className="item">Finished</span> */}
+
           </div>
         </div>
       </div>

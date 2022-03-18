@@ -1,37 +1,56 @@
 import React from "react";
 import Nav from "./Nav";
 import Body from "./Body";
-        // {Title: "", Description: "", Tags: "", State: ""}
+import { nanoid } from 'nanoid'
+
+
 export default function App() {
 
     const [allNotes, setAllNotes] = React.useState([])
-    const [newNote, setNewNote] = React.useState({
-        Title: "", Description: "", Tags: [], State: "Start working"
-    })
     const [inProgress, setInProgress] = React.useState([])
+
+    const [newNote, setNewNote] = React.useState({
+        Title: "", Description: "", Tags: [], State: "", id: nanoid()
+    })
 
     function submit(){
         let inputs = document.querySelectorAll(".inputs")
         inputs.forEach(item=>{
             item.value = ""
         })
+        if(newNote.Title)
         setAllNotes(oldVal=>{
             return [
                 ...oldVal,
                 newNote
             ]
         })
-        setNewNote({})
+        setNewNote({Title: "", Description: "", Tags: [], State: "", id: nanoid()})
     }
 
-    function stateChange(event){
+    function pushNote(event){
+        let parent = event.target.parentElement.lastChild.textContent
+        let val
+        setAllNotes(oldVal=>{
+            let newArr = []
+            oldVal.map(item=>{
+                if(item.id !== parent) newArr.push(item)
+                if(item.id === parent) val = item
+            })
+
+            return newArr
+        })
         setInProgress(oldVal=>{
+            val.State = "Finished!"
+
             return [
                 ...oldVal,
-                newNote
+                val
             ]
         })
     }
+
+
 
     function change(event){
         setNewNote(oldVal=>{
@@ -39,12 +58,15 @@ export default function App() {
                 let arr = event.target.value.split(" ")
                 return {
                     ...oldVal,
-                    [event.target.name]: arr
+                    [event.target.name]: arr,
+                    State: "Start working"
                 }
             }else{
                 return {
                     ...oldVal,
-                    [event.target.name]: event.target.value
+                    [event.target.name]: event.target.value,
+                    State: "Start working"
+
                 }
             }
 
@@ -55,7 +77,7 @@ export default function App() {
   return (
     <div className="app">
         <Nav submit={submit} change={change}/>
-        {!!allNotes.length && <Body allNotes={allNotes} stateChange={stateChange} inProgress={inProgress}/>}
+        <Body allNotes={allNotes} pushNote={pushNote} inProgress={inProgress}/>
     </div>
   );
 }

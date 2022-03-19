@@ -16,10 +16,12 @@ export default function Body(props) {
     });
 
     if(item.Description.length > 70){
-      item.Description = item.Description.slice(0,30)
-    console.log(item.Description.includes("a"))
+      let space = item.Description.slice(60).indexOf(" ") + 60
+      item.Description = item.Description.slice(0,space) + "..."
 
     }
+
+
 
 
     return (

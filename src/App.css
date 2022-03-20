@@ -50,6 +50,7 @@ form {
 .form-item {
   display: flex;
   justify-content: space-between;
+  height: 33px;
 }
 .duty-input {
   width: 33%;

@@ -2,9 +2,6 @@
 
 export default function Nav(props){
 
-  function createTags(event){
-    props.change(event)
-  }
 
     return(
         <div className="nav">
@@ -23,7 +20,7 @@ export default function Nav(props){
           <div className="form-container">
           <div className="form-item">
             <input type="text" className="inputs duty-input" placeholder="Duty" name="Title" onChange={(event)=>props.change(event)}/>
-            <input type="text" className="inputs tags-input" placeholder="Tags" name="Tags" onChange={(event)=>createTags(event)}/>
+            <input type="text" className="inputs tags-input" placeholder="Tags" name="Tags" onChange={(event)=>props.change(event)}/>
             </div>
         <div>
             <input type="text" className="inputs desc-input" placeholder="Description" name="Description" onChange={(event)=>props.change(event)}/>

@@ -25,10 +25,6 @@ export default function Nav(props){
         </div>
           </div>
 
-        
-
-
-
         </form>
       </div>
     )

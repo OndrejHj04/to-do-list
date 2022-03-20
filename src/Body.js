@@ -6,6 +6,9 @@ export default function Body(props) {
   function getTags(item){
     let tagsArr = new Set(item.Tags);
     tagsArr = [...tagsArr];
+    tagsArr = tagsArr.filter(item=>{
+      if(Boolean(item) && item.length < 20) return item
+    })
     return tagsArr.map((item) => {
       return <span className="tag-item" key={nanoid()}>{item}</span>
     });

@@ -14,6 +14,10 @@ export default function App() {
         Title: "", Description: "", Tags: [], State: "", id: nanoid()
     })
 
+    localStorage.setItem("blig", allNotes)
+    const xd = localStorage.getItem("blig")
+    console.log(Object.prototype.toString.call(xd))
+
     function submit(event){
         event.preventDefault()
         let inputs = document.querySelectorAll(".inputs")
@@ -74,6 +78,16 @@ export default function App() {
 
     }
 
+    function remove(event){
+        let id = event.target.parentElement.lastChild.textContent
+        setFinished(oldVal=>{
+            let arr = []
+            oldVal.map(item=>{
+                if(item.id !== id) arr.push(item)
+            })
+            return arr
+        })
+    }
 
 
     function change(event){
@@ -101,7 +115,7 @@ export default function App() {
   return (
     <div className="app">
         <Nav submit={submit} change={change}/>
-        <Body allNotes={allNotes} pushNote={pushNote} inProgress={inProgress} finished={finished}/>
+        <Body allNotes={allNotes} pushNote={pushNote} inProgress={inProgress} finished={finished} remove={remove}/>
     </div>
   );
 }

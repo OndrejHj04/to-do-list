@@ -4,6 +4,8 @@ export default function Nav(props){
     return(
         <div className="nav">
         <div className="title-container">
+        <img src="./todo.png" className="todo-img"/>
+
           <h1 className="title">TO DO list</h1>
         </div>
         <form onSubmit={props.submit}>

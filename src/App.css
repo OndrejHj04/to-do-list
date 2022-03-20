@@ -36,6 +36,7 @@ form {
 }
 .title-container {
   position: relative;
+  display: flex;
 }
 .inputs {
   border-radius: 15px;
@@ -117,4 +118,9 @@ form {
   height: 30px;
   margin-left: auto;
   cursor: pointer;
+}
+.todo-img{
+  height: 40px;
+  width: 40px;
+  margin: auto 10px;
 }

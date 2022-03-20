@@ -6,17 +6,32 @@ import { nanoid } from 'nanoid'
 
 export default function App() {
 
-    const [allNotes, setAllNotes] = React.useState([])
-    const [inProgress, setInProgress] = React.useState([])
-    const [finished, setFinished] = React.useState([])
+
+
+    const [allNotes, setAllNotes] = React.useState(storage("todo").length ? storage("todo") : [])
+    const [inProgress, setInProgress] = React.useState(storage("progress").length ? storage("progress") : [])
+    const [finished, setFinished] = React.useState(storage("finished").length ? storage("finished") : [])
 
     const [newNote, setNewNote] = React.useState({
         Title: "", Description: "", Tags: [], State: "", id: nanoid()
     })
 
-    localStorage.setItem("blig", allNotes)
-    const xd = localStorage.getItem("blig")
-    console.log(Object.prototype.toString.call(xd))
+    function storage(type){
+        return JSON.parse(localStorage.getItem(type))
+    }
+
+    React.useEffect(()=>{
+        localStorage.setItem("todo", JSON.stringify(allNotes))
+    },[allNotes])
+
+    React.useEffect(()=>{
+        localStorage.setItem("progress", JSON.stringify(inProgress))
+    },[inProgress])
+
+    React.useEffect(()=>{
+        localStorage.setItem("finished", JSON.stringify(finished))
+    },[finished])
+
 
     function submit(event){
         event.preventDefault()

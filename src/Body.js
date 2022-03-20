@@ -1,7 +1,7 @@
-import React from "react";
 import { nanoid } from "nanoid";
 
 export default function Body(props) {
+
 
   function getTags(item){
     let tagsArr = new Set(item.Tags);
@@ -18,11 +18,11 @@ export default function Body(props) {
     let tags = getTags(item)
 
     return (
-      <div className="todos to-do" key={nanoid()}>
+      <div className="todos to-do" key={nanoid()} >
         <span className="item title-container">{item.Title}</span>
         <span className="item">{item.Description}</span>
         <span className="item tags-container">{tags}</span>
-{item.State  ? <span className="item state" onClick={props.pushNote}>{item.State}</span> : <img onClick={props.remove} src="./trash.png" className="trash"></img>}
+      {item.State  ? <span className="item state" onClick={props.pushNote}>{item.State}</span> : <img onClick={props.remove} src="./trash.png" className="trash"></img>}
         <span className="code">{item.id}</span>
       </div>
     );
@@ -41,14 +41,9 @@ export default function Body(props) {
     );
   });
 
-  const inProgress = props.inProgress.map((item) => {
-    return renderItems(item)
-  });
+  const inProgress = props.inProgress.map(item => renderItems(item))
 
-  const finished = props.finished.map((item) => {
-    return renderItems(item)
-
-  });
+  const finished = props.finished.map(item => renderItems(item))
 
 
 

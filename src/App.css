@@ -12,7 +12,9 @@ body {
 }
 .nav {
   display: flex;
-  background: pink;
+  background: 	#D8BFD8;
+  box-shadow: 0px 4px  5px  1px #cecece ;
+  margin-bottom: 5px;
 }
 form {
   width: 80%;
@@ -120,7 +122,7 @@ form {
   cursor: pointer;
 }
 .todo-img{
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   margin: auto 10px;
 }

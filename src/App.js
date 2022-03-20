@@ -1,4 +1,4 @@
-import React from "react";
+import {useState , useEffect} from "react";
 import Nav from "./Nav";
 import Body from "./Body";
 import { nanoid } from 'nanoid'
@@ -8,11 +8,11 @@ export default function App() {
 
 
 
-    const [allNotes, setAllNotes] = React.useState(storage("todo").length ? storage("todo") : [])
-    const [inProgress, setInProgress] = React.useState(storage("progress").length ? storage("progress") : [])
-    const [finished, setFinished] = React.useState(storage("finished").length ? storage("finished") : [])
+    const [allNotes, setAllNotes] = useState(storage("todo").length ? storage("todo") : [])
+    const [inProgress, setInProgress] = useState(storage("progress").length ? storage("progress") : [])
+    const [finished, setFinished] = useState(storage("finished").length ? storage("finished") : [])
 
-    const [newNote, setNewNote] = React.useState({
+    const [newNote, setNewNote] = useState({
         Title: "", Description: "", Tags: [], State: "", id: nanoid()
     })
 
@@ -20,15 +20,15 @@ export default function App() {
         return JSON.parse(localStorage.getItem(type))
     }
 
-    React.useEffect(()=>{
+    useEffect(()=>{
         localStorage.setItem("todo", JSON.stringify(allNotes))
     },[allNotes])
 
-    React.useEffect(()=>{
+    useEffect(()=>{
         localStorage.setItem("progress", JSON.stringify(inProgress))
     },[inProgress])
 
-    React.useEffect(()=>{
+    useEffect(()=>{
         localStorage.setItem("finished", JSON.stringify(finished))
     },[finished])
 

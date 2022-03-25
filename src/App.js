@@ -7,7 +7,6 @@ import { nanoid } from 'nanoid'
 export default function App() {
 
 
-
     const [allNotes, setAllNotes] = useState(storage("todo").length ? storage("todo") : [])
     const [inProgress, setInProgress] = useState(storage("progress").length ? storage("progress") : [])
     const [finished, setFinished] = useState(storage("finished").length ? storage("finished") : [])
@@ -58,6 +57,7 @@ export default function App() {
                 oldVal.map(item=>{
                     if(item.id !== parent) newArr.push(item)
                     if(item.id === parent) val = item
+                    return item
                 })
     
                 return newArr
@@ -77,6 +77,7 @@ export default function App() {
                 oldVal.map(item=>{
                     if(item.id !== parent) newArr.push(item)
                     if(item.id === parent) val = item
+                    return item
                 })
     
                 return newArr
@@ -99,6 +100,7 @@ export default function App() {
             let arr = []
             oldVal.map(item=>{
                 if(item.id !== id) arr.push(item)
+                return item
             })
             return arr
         })

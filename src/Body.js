@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 
 export default function Body(props) {
-
+  var randomColor = require('randomcolor'); // import the script
 
   function getTags(item){
     let tagsArr = new Set(item.Tags);
@@ -10,7 +10,7 @@ export default function Body(props) {
       if(Boolean(item) && item.length < 20) return item
     })
     return tagsArr.map((item) => {
-      return <span className="tag-item" key={nanoid()}>{item}</span>
+      return <span className="tag-item" style={{background: randomColor({luminosity: 'light'})}} key={nanoid()}>{item.toLowerCase()}</span>
     });
      
   }

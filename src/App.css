@@ -109,7 +109,6 @@ form {
   display: flex;
 }
 .tag-item{
-  background: rgb(245, 185, 185);
   font-size: 20px;
   border-radius: 10px;
   margin: 0 5px;
